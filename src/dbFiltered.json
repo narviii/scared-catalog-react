@@ -7,8 +7,7 @@
       "tags": [
         "Lingerie",
         "Swimwear",
-        "Tailored",
-        "Cotton"
+        "Tailored"
       ],
       "fav": true
     },
@@ -20,8 +19,7 @@
       "tags": [
         "Lingerie",
         "Clothes",
-        "Swimwear",
-        "Silk"
+        "Swimwear"
       ],
       "fav": true
     },
@@ -34,8 +32,7 @@
         "Lingerie",
         "Sleep/Lounge",
         "Corsets",
-        "Small cup",
-        "Silk"
+        "Small cup"
       ],
       "fav": true
     },
@@ -46,8 +43,7 @@
       "origin": "USA",
       "tags": [
         "Lingerie",
-        "Sleep/Lounge",
-        "Silks&Embroidery"
+        "Sleep/Lounge"
       ],
       "fav": true
     },
@@ -60,9 +56,7 @@
         "Lingerie",
         "Swimwear",
         "Accessories",
-        "Fetish",
-        "Small cup",
-        "Cotton"
+        "Small cup"
       ],
       "fav": true
     },
@@ -75,7 +69,8 @@
         "Lingerie",
         "Hosiery",
         "Sleep/Lounge",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ]
     },
     {
@@ -89,8 +84,8 @@
         "Corsets",
         "Sleep/Lounge",
         "Accessories",
-        "Retro",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ],
       "fav": true
     },
@@ -104,8 +99,8 @@
         "Hosiery",
         "Clothes",
         "Accessories",
-        "Small / Large cup",
-        "Knitting"
+        "Small cup",
+        "Large cup"
       ],
       "fav": true
     },
@@ -131,8 +126,8 @@
         "Lingerie",
         "Sleep/Lounge",
         "Clothes",
-        "Small cup / Tailored",
-        "Silk"
+        "Small cup",
+        "Tailored"
       ],
       "fav": true
     },
@@ -157,8 +152,7 @@
       "tags": [
         "Lingerie",
         "Sleep/Lounge",
-        "Corsets",
-        "Silk"
+        "Corsets"
       ],
       "fav": true
     },
@@ -182,7 +176,8 @@
       "tags": [
         "Lingerie",
         "Sleep/Lounge",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ]
     },
     {
@@ -193,8 +188,7 @@
       "tags": [
         "Lingerie",
         "Sleep/Lounge",
-        "Accessories",
-        "Fetish"
+        "Accessories"
       ]
     },
     {
@@ -203,9 +197,9 @@
       "link": "https://www.fleetilya.com/",
       "origin": "UK",
       "tags": [
-        "Leather",
+        "Lingerie",
         "Accessories",
-        "Fetish",
+        "Leather",
         "Small cup"
       ],
       "fav": true
@@ -220,8 +214,8 @@
         "Sleep/Lounge",
         "Swimwear",
         "Hosiery",
-        "Silk",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ]
     },
     {
@@ -243,8 +237,7 @@
       "tags": [
         "Lingerie",
         "Sleep/Lounge",
-        "Accessories",
-        "Silk & Leather"
+        "Accessories"
       ]
     },
     {
@@ -256,9 +249,8 @@
         "Lingerie",
         "Clothes",
         "Sleep/Lounge",
-        "Cotton",
-        "Small cup",
-        "Hosiery"
+        "Hosiery",
+        "Small cup"
       ],
       "fav": true
     },
@@ -272,8 +264,7 @@
         "Sleep/Lounge",
         "Clothes",
         "Hosiery",
-        "Large cup",
-        "Silk"
+        "Large cup"
       ],
       "fav": true
     },
@@ -310,8 +301,7 @@
       "tags": [
         "Lingerie",
         "Accessories",
-        "Large cup",
-        "Silk"
+        "Large cup"
       ],
       "fav": true
     },
@@ -326,7 +316,8 @@
         "Sleep/Lounge",
         "Clothes",
         "Accessories",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ],
       "fav": true
     },
@@ -339,7 +330,8 @@
         "Lingerie",
         "Sleep/Lounge",
         "Accessories",
-        "Small / Large cup"
+        "Small cup",
+        "Large cup"
       ],
       "fav": true
     },
@@ -351,19 +343,19 @@
       "tags": [
         "Lingerie",
         "Corsets",
-        "Small / Large cup",
-        "Silk"
+        "Accessories",
+        "Small cup",
+        "Large cup"
       ]
     },
     {
-      "title": "MOON",
+      "title": "Verdian",
       "desc": "Comfy bralettes, briefs, and bodysuits for everyday wear made of thin, breathable mesh and soft cotton. The brand offers custom sizing at no extra cost. ",
       "link": "https://www.verdian.no/",
       "origin": "Norway",
       "tags": [
         "Lingerie",
-        "Tailored",
-        "Cotton"
+        "Tailored"
       ],
       "fav": true
     },
@@ -375,8 +367,7 @@
       "tags": [
         "Lingerie",
         "Sleep/Lounge",
-        "Small cup",
-        "Silk"
+        "Small cup"
       ],
       "fav": true
     },
@@ -387,8 +378,7 @@
       "origin": "Hungary",
       "tags": [
         "Lingerie",
-        "Small cup",
-        "Embroidery"
+        "Small cup"
       ],
       "fav": true
     },
@@ -399,8 +389,7 @@
       "origin": "Switzerland",
       "tags": [
         "Lingerie",
-        "Sleep/Lounge",
-        "Silk"
+        "Sleep/Lounge"
       ],
       "fav": true
     }

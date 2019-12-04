@@ -139,13 +139,19 @@ function SelectTags(props) {
   const [tag, setTag] = React.useState([props.tags[0]]);
 
   const handleChange = event => { 
+    console.log(event.target.value)
     let eventFiltered=event.target.value
+    
 
-    if (eventFiltered.includes('All')&& eventFiltered.length>1){
+    if (eventFiltered[0]==='All' && eventFiltered.length>1){
       eventFiltered=eventFiltered.filter(elem=>elem!=='All')
     }
     if (eventFiltered.length<1){
       eventFiltered.push('All')
+    }
+
+    if (eventFiltered[(eventFiltered.length-1)]==='All' && eventFiltered.length>1){
+      eventFiltered=['All']
     }
     setTag(eventFiltered);
     props.onSelectChange(state => ({ ...state,tags:eventFiltered}))
