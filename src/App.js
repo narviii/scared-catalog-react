@@ -1,16 +1,10 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import CardActionArea from '@material-ui/core/CardActionArea';
 //import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -23,16 +17,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FormControl, CardHeader } from '@material-ui/core';
 import { useState } from 'react';
 import {intersection} from 'lodash'
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Favorite from '@material-ui/icons/Favorite';
-import Badge from '@material-ui/core/Badge';
-import IconButton from '@material-ui/core/IconButton';
-import MailIcon from '@material-ui/icons/Mail';
+
 import Input from '@material-ui/core/Input';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
@@ -139,7 +129,7 @@ function SelectTags(props) {
   const [tag, setTag] = React.useState([props.tags[0]]);
 
   const handleChange = event => { 
-    console.log(event.target.value)
+    //console.log(event.target.value)
     let eventFiltered=event.target.value
     
 
@@ -209,18 +199,26 @@ function Post(props){
   )
 }
 
+function SuchEmpty(props){
+  return (
+     <Typography variant="h5" align="center" color="textSecondary" paragraph>
+     Such empty!!! Come back soon, we will add more...
+     </Typography>
+  )
+}
+
 function CardGrid(props){
   const classes = useStyles();
   
   return (
     <Container className={classes.cardGrid} maxWidth="md"  >
-          
+          {props.db.length>0?
           <Grid container spacing={4}   alignItems="stretch">
             {props.db.map(card => (
               <Post classes={classes} cardCont={card} key={card.title}/>
             ))}
           </Grid>
-          
+          :<SuchEmpty/>}
         </Container>
   )
 }
@@ -233,7 +231,7 @@ function filterData(data,fltr){
    if (fltr.origin!=='All') data = data.filter(elem=>elem.origin===fltr.origin)
    if (fltr.fav===true) data=data.filter(elem=>elem.fav===true)
    if (fltr.tags[0]!=='All') data = data.filter(elem=>intersection(elem.tags,fltr.tags).length!==0)
-   console.log(fltr.tags)
+   //console.log(fltr.tags)
    return data
 }
 
@@ -272,20 +270,6 @@ function App() {
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Lingerie brands catalog
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
     <Container maxWidth="md">
