@@ -86,6 +86,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://blog.scaredpanties.com/">
+        scaredpanties
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 
 const getOrigins = (db) =>{
   let items=[]
@@ -166,7 +179,9 @@ function Post(props){
                   <CardContent className={props.cardContent} >
                     <Typography gutterBottom variant="h5" component="h2">
                       <Link href={props.cardCont.link}>{props.cardCont.title}</Link>
-                    </Typography>   
+                      { props.cardCont.fav===true ? <Favorite style={{color:"red"}}/>:null} 
+                    </Typography>
+                    
                     <Typography gutterBottom variant="h6">{props.cardCont.origin}</Typography>
                     <Typography >
                       {props.cardCont.desc}
@@ -246,12 +261,10 @@ function App() {
     <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              scaredpanties
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              Lingerie brands catalog
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -279,9 +292,10 @@ function App() {
           </Grid> 
 
           <Grid key='selectorFav' item>
+          
           <FormControlLabel
             control=
-              {
+              { 
                 <Checkbox
                   checked={favState}
                   onChange={handleFavChange}
@@ -291,11 +305,17 @@ function App() {
               }
               label="Scaredpanties' Favorites"
               />
+          <Favorite style={{color:"red"}}/>
           </Grid>
         </Grid>
     </Container>
     <CardGrid db={filterData(data,filter)}/>
-   
+    <footer className={classes.footer}>
+        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        Lingerie reviews, advice, and tips with a touch of luxury
+        </Typography>
+        <Copyright />
+      </footer>
    </div>
   )
 }
