@@ -22,6 +22,17 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FormControl } from '@material-ui/core';
 import { useState } from 'react';
+import {intersection} from 'lodash'
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Favorite from '@material-ui/icons/Favorite';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import MailIcon from '@material-ui/icons/Mail';
+import Input from '@material-ui/core/Input';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -77,7 +88,8 @@ function SelectOrigin(props){
   const [age, setAge] = React.useState(props.origins[0]);
   const handleChange = event => {
     setAge(event.target.value);
-    props.onSelectChange(event.target.value)
+    props.onSelectChange(state => ({ ...state,origin:event.target.value }))
+    
   };
   
   return(
@@ -85,19 +97,39 @@ function SelectOrigin(props){
     <FormControl>
     <InputLabel id="origin-select">Country</InputLabel>
     <Select
-          style= {{minWidth:'120px'}}
+          style= {{minWidth:'230px'}}
           labelId="origin-select"
           id="origin-select"
           
           value={age}
           onChange={handleChange}>
-          {props.origins.map((origin)=> <MenuItem value={origin}>{origin}</MenuItem>)}
+          {props.origins.map((origin)=> <MenuItem key={origin} value={origin}>{origin}</MenuItem>)}
           
         </Select>
       </FormControl>
     </div>
   )
 
+}
+
+function SelectTags(props) {
+  const items = props.tags.map(name => (
+    <div>
+      <MenuItem key={name} value={name}>
+        <ListItemText primary={name}/>
+        <Checkbox/>
+      </MenuItem>
+    </div>
+  ))
+  return (
+    <FormControl>
+      <Select>
+        {items}
+      </Select>
+    </FormControl>
+     
+  )
+  
 }
 
 function Post(props){
@@ -108,7 +140,11 @@ function Post(props){
                   <CardContent className={props.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       <Link href={props.cardCont.link}>{props.cardCont.title}</Link>
+                      { props.cardCont.tags.includes('SP fav') ? <Favorite style={{color:"red"}}/>:null}
                     </Typography>
+                    
+                    
+                    
                     <Typography gutterBottom variant="h6">{props.cardCont.origin}</Typography>
                     <Typography>
                       {props.cardCont.desc}
@@ -121,10 +157,10 @@ function Post(props){
 
 function CardGrid(props){
   const classes = useStyles();
-  //console.log(props.db)
+  
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+          
           <Grid container spacing={4}>
             {props.db.map(card => (
               <Post classes={classes} cardCont={card} key={card.title}/>
@@ -135,18 +171,46 @@ function CardGrid(props){
   )
 }
 
-function filterData(data,filter){
-  if (filter!='All') {
-    return data.filter(item => item.origin===filter)
-  }
-    else return data
+let tagList = (db) => {
+  return Array.from(new Set(db.map(post => post.tags).reduce((a,b) => a.concat(b))))
+}
+function filterData(data,fltr){
+  if (fltr.origin==='All' && fltr.tags.length===0) 
+    return data
+    else if(fltr.tags.length===0){
+      return data.filter(elem=>elem.origin===fltr.origin)
+    }else if(fltr.origin==='All' && fltr.tags.length!==0){
+      return data.filter(elem=>intersection(elem.tags,fltr.tags).length!==0)
+    }
+    else return data.filter(function(elem){
+        
+        
+        return (intersection(elem.tags,fltr.tags).length!==0 && elem.origin===fltr.origin)
+    })
 }
 
 
 function App() {
+  let initFilter={
+    origin:"All",
+    tags:[]
+  }
   
+  const handleFavChange = event => {
+    let tempFilter=filter
+    if (event.target.checked===true) {
+        tempFilter.tags.push('SP fav')
+        setFilter(tempFilter)
+    }else{
+      tempFilter.tags=tempFilter.tags.filter(elem=>elem!=='SP fav')
+      setFilter(tempFilter)
+    }
+    setFav(event.target.checked);
+  };
+
   const classes = useStyles();
-  const [filter, setFilter] = useState('USA');
+  const [filter, setFilter] = useState(initFilter);
+  const [favState, setFav] = React.useState(false)
   return (
    <div>
     <div className={classes.heroContent}>
@@ -176,11 +240,27 @@ function App() {
           </Container>
         </div>
     <Container maxWidth="md">
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={2} justify="center" alignItems="center">
           <Grid item>
-          < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
-          
+            < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
           </Grid>
+          <Grid key='selectorFav' item>
+          <FormControlLabel
+            control=
+              {
+                <Checkbox
+                  checked={favState}
+                  onChange={handleFavChange}
+                  value="checkedB"
+                  color="primary"
+              />
+              }
+              label="Scaredpanties' Favorites"
+              />
+          </Grid>
+         <Grid key='tagSelector' item>
+              <SelectTags tags={tagList(filterData(data,filter)).filter(elem=>elem!=='SP fav')}/>
+          </Grid> 
         </Grid>
     </Container>
     <CardGrid db={filterData(data,filter)}/>
