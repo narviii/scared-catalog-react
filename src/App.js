@@ -20,7 +20,6 @@ import {intersection} from 'lodash'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
-import white from '@material-ui/core/colors/red';
 import ReactGA from 'react-ga';
 import Input from '@material-ui/core/Input';
 
