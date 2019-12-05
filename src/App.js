@@ -94,6 +94,12 @@ function initializeReactGA() {
   ReactGA.pageview('/');
 }
 
+function initializeReactGAmain() {
+  ReactGA.initialize('UA-39274880-3');
+  ReactGA.pageview('/catalog');
+}
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -269,6 +275,7 @@ function App() {
     
   };
   initializeReactGA()
+  initializeReactGAmain()
   const classes = useStyles();
   const [filter, setFilter] = useState(initFilter);
   const [favState, setFav] = React.useState(false)
