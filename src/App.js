@@ -89,10 +89,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function initializeReactGA() {
-  ReactGA.initialize('UA-39274880-4');
-  ReactGA.pageview('/');
-}
+
 
 function initializeReactGAmain() {
   ReactGA.initialize('UA-39274880-3');
@@ -274,7 +271,7 @@ function App() {
     setFilter(state => ({ ...state,fav:tmp}))
     
   };
-  initializeReactGA()
+ 
   initializeReactGAmain()
   const classes = useStyles();
   const [filter, setFilter] = useState(initFilter);
