@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/scared-catalog-react/static/css/main.34de6062.chunk.css",
-    "main.js": "/scared-catalog-react/static/js/main.60f2012a.chunk.js",
-    "main.js.map": "/scared-catalog-react/static/js/main.60f2012a.chunk.js.map",
-    "runtime-main.js": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js",
-    "runtime-main.js.map": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js.map",
-    "static/js/2.69c5ea88.chunk.js": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js",
-    "static/js/2.69c5ea88.chunk.js.map": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js.map",
-    "index.html": "/scared-catalog-react/index.html",
-    "precache-manifest.3dc9be23cc75c6943b76ba8b3c8a5b56.js": "/scared-catalog-react/precache-manifest.3dc9be23cc75c6943b76ba8b3c8a5b56.js",
-    "service-worker.js": "/scared-catalog-react/service-worker.js",
-    "static/css/main.34de6062.chunk.css.map": "/scared-catalog-react/static/css/main.34de6062.chunk.css.map"
+    "main.css": "/static/css/main.34de6062.chunk.css",
+    "main.js": "/static/js/main.3ca6fa63.chunk.js",
+    "main.js.map": "/static/js/main.3ca6fa63.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.890ce0ff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.890ce0ff.js.map",
+    "static/js/2.69c5ea88.chunk.js": "/static/js/2.69c5ea88.chunk.js",
+    "static/js/2.69c5ea88.chunk.js.map": "/static/js/2.69c5ea88.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.17f8d3e1741cc3c00598e3efe37f90b0.js": "/precache-manifest.17f8d3e1741cc3c00598e3efe37f90b0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/static/css/main.34de6062.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.7c829c4b.js",
+    "static/js/runtime-main.890ce0ff.js",
     "static/js/2.69c5ea88.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.60f2012a.chunk.js"
+    "static/js/main.3ca6fa63.chunk.js"
   ]
 }
