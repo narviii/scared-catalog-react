@@ -20,7 +20,8 @@ import {intersection} from 'lodash'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
-
+import white from '@material-ui/core/colors/red';
+import ReactGA from 'react-ga';
 import Input from '@material-ui/core/Input';
 
 import Box from '@material-ui/core/Box';
@@ -31,14 +32,27 @@ const useStyles = makeStyles(theme => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(8, 8, 8),
+    backgroundImage:"url(" + "https://blog.scaredpanties.com/content/images/size/w2000/2019/06/B0010006_extended2.jpg"+")",
+    
+    width:'100%',
+    height:' 100%',
+
+    
+    backgroundPosition: 'center',
+    
+    backgroundSize: 'cover'
+  },
+  heroTypography:{
+    color:'white'
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
     
   },
   card: {
@@ -61,11 +75,11 @@ const useStyles = makeStyles(theme => ({
   chipGrid:{
     display:"flex",
     flexWrap: 'wrap',
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     
     
     '& > *': {
-      margin: theme.spacing(0.7),
+      margin: theme.spacing(0.5),
     },
     
     
@@ -75,6 +89,11 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(6),
   },
 }));
+
+function initializeReactGA() {
+  ReactGA.initialize('UA-39274880-4');
+  ReactGA.pageview('/');
+}
 
 function Copyright() {
   return (
@@ -250,7 +269,7 @@ function App() {
     setFilter(state => ({ ...state,fav:tmp}))
     
   };
-
+  initializeReactGA()
   const classes = useStyles();
   const [filter, setFilter] = useState(initFilter);
   const [favState, setFav] = React.useState(false)
@@ -264,16 +283,16 @@ function App() {
     <CssBaseline />
     <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography component="h1" variant="h2" align="center" className={classes.heroTypography} gutterBottom>
               scaredpanties
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            <Typography variant="h5" align="center" color="textSecondary" className={classes.heroTypography} paragraph>
               Lingerie brands catalog
             </Typography>
           </Container>
         </div>
-    <Container maxWidth="md">
-        <Grid container spacing={2} justify="center" alignItems="center">
+    <Container  maxWidth="md" >
+        <Grid container spacing={2} justify="center">
           <Grid item>
             < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
           </Grid>
