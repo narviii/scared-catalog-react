@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/scared-catalog-react/precache-manifest.dda6535f6e4228dcd8133ab7ce9e78d6.js"
+  "/scared-catalog-react/precache-manifest.0f422fbbf3253fbb438508855ed253e1.js"
 );
 
 self.addEventListener('message', (event) => {

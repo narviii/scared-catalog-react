@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/scared-catalog-react/static/css/main.34de6062.chunk.css",
-    "main.js": "/scared-catalog-react/static/js/main.056a8f37.chunk.js",
-    "main.js.map": "/scared-catalog-react/static/js/main.056a8f37.chunk.js.map",
+    "main.js": "/scared-catalog-react/static/js/main.6c718fda.chunk.js",
+    "main.js.map": "/scared-catalog-react/static/js/main.6c718fda.chunk.js.map",
     "runtime-main.js": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js",
     "runtime-main.js.map": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js.map",
-    "static/js/2.69c5ea88.chunk.js": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js",
-    "static/js/2.69c5ea88.chunk.js.map": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js.map",
+    "static/js/2.a5d8135e.chunk.js": "/scared-catalog-react/static/js/2.a5d8135e.chunk.js",
+    "static/js/2.a5d8135e.chunk.js.map": "/scared-catalog-react/static/js/2.a5d8135e.chunk.js.map",
     "index.html": "/scared-catalog-react/index.html",
-    "precache-manifest.dda6535f6e4228dcd8133ab7ce9e78d6.js": "/scared-catalog-react/precache-manifest.dda6535f6e4228dcd8133ab7ce9e78d6.js",
+    "precache-manifest.0f422fbbf3253fbb438508855ed253e1.js": "/scared-catalog-react/precache-manifest.0f422fbbf3253fbb438508855ed253e1.js",
     "service-worker.js": "/scared-catalog-react/service-worker.js",
     "static/css/main.34de6062.chunk.css.map": "/scared-catalog-react/static/css/main.34de6062.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.7c829c4b.js",
-    "static/js/2.69c5ea88.chunk.js",
+    "static/js/2.a5d8135e.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.056a8f37.chunk.js"
+    "static/js/main.6c718fda.chunk.js"
   ]
 }
