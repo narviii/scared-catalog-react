@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
   chipGrid:{
     display:"flex",
     flexWrap: 'wrap',
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     
     
     '& > *': {
