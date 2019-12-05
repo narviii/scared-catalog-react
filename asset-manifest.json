@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/scared-catalog-react/static/css/main.34de6062.chunk.css",
+    "main.js": "/scared-catalog-react/static/js/main.056a8f37.chunk.js",
+    "main.js.map": "/scared-catalog-react/static/js/main.056a8f37.chunk.js.map",
+    "runtime-main.js": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js",
+    "runtime-main.js.map": "/scared-catalog-react/static/js/runtime-main.7c829c4b.js.map",
+    "static/js/2.69c5ea88.chunk.js": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js",
+    "static/js/2.69c5ea88.chunk.js.map": "/scared-catalog-react/static/js/2.69c5ea88.chunk.js.map",
+    "index.html": "/scared-catalog-react/index.html",
+    "precache-manifest.dda6535f6e4228dcd8133ab7ce9e78d6.js": "/scared-catalog-react/precache-manifest.dda6535f6e4228dcd8133ab7ce9e78d6.js",
+    "service-worker.js": "/scared-catalog-react/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/scared-catalog-react/static/css/main.34de6062.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c829c4b.js",
+    "static/js/2.69c5ea88.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.056a8f37.chunk.js"
+  ]
+}
