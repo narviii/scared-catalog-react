@@ -1,6 +1,6 @@
 import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
-//import CameraIcon from '@material-ui/icons/PhotoCamera';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,17 +22,25 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import ReactGA from 'react-ga';
 import Input from '@material-ui/core/Input';
-
+import IconButton from '@material-ui/core/IconButton';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import MailIcon from '@material-ui/icons/Mail';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { tsExpressionWithTypeArguments } from '@babel/types';
 
 const useStyles = makeStyles(theme => ({
   icon: {
+    marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(8, 8, 8),
+    
+    padding: theme.spacing(8, 0, 6),
     backgroundImage:"url(" + "https://blog.scaredpanties.com/content/images/size/w2000/2019/06/B0010006_extended2.jpg"+")",
     
     width:'100%',
@@ -69,7 +77,7 @@ const useStyles = makeStyles(theme => ({
     margin:"200px",
     flexGrow: 1,
     alignItems:"flex-end",
-    
+  
   },
   chipGrid:{
     display:"flex",
@@ -258,6 +266,7 @@ function filterData(data,fltr){
 
 
 function App() {
+  
   let initFilter={
     origin:"All",
     tags:['All'],
@@ -283,19 +292,41 @@ function App() {
   
   return (
    <div>
-    <CssBaseline />
+    <CssBaseline/>
     <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" className={classes.heroTypography} gutterBottom>
-              scaredpanties
+          <Container maxWidth="md">
+            <Typography variant="h3" align="center" className={classes.heroTypography} gutterBottom >
+            scaredpanties'
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" className={classes.heroTypography} paragraph>
-              Lingerie brands catalog
+            <Typography variant="h6" align="center" color="textSecondary" className={classes.heroTypography} paragraph>
+              lingerie brands catalog
             </Typography>
+          
           </Container>
         </div>
+    <Container maxWidth="md" gutterBottom>
+      <Grid container justify="space-between" alignItems="center" spacing={2}>
+          <Grid item>
+            <Button variant="outlined"  color="primary" href="https://blog.scaredpanties.com" > BLOG </Button>
+          </Grid>
+          <Grid item>
+            <IconButton color="primary" aria-label="Mail to scaredpanties" href="mailto:scaredpanties@gmail.com">
+                <MailIcon/>
+            </IconButton>
+            <IconButton color="primary" aria-label="Instagramm" href="https://www.instagram.com/scaredpanties/">
+                <InstagramIcon/>
+            </IconButton>
+            <IconButton color="primary" aria-label="Youtube" href="https://www.youtube.com/channel/UCge0-VKn4mfJfGt1ZCMbcpQ?view_as=subscriber">
+                <YouTubeIcon/>
+            </IconButton>
+            <IconButton color="primary" aria-label="Twitter" href="https://twitter.com/scaredpanties">
+                <TwitterIcon/>
+            </IconButton>
+          </Grid>
+        </Grid>
+    </Container>
     <Container  maxWidth="md" >
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={2} justify="space-between">
           <Grid item>
             < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
           </Grid>
@@ -315,7 +346,7 @@ function App() {
                   color="primary"
               />
               }
-              label="Scaredpanties' Favorites"
+              label="scaredpanties' favorites"
               />
           <Favorite style={{color:"red"}}/>
           </Grid>
@@ -324,7 +355,7 @@ function App() {
     <CardGrid db={filterData(data,filter)}/>
     <footer className={classes.footer}>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        Lingerie reviews, advice, and tips with a touch of luxury
+        Lingerie reviews, advice, and tips with a touch of luxury. Feel free to reach out to me via e-mail scaredpanties@gmail.com.
         </Typography>
         <Copyright />
       </footer>
