@@ -1,6 +1,6 @@
 import React from 'react';
 import CardActionArea from '@material-ui/core/CardActionArea';
-
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -31,6 +31,10 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { tsExpressionWithTypeArguments } from '@babel/types';
 
+const url = "https://scaredpanties.us20.list-manage.com/subscribe/post?u=65173dffd9ab714c0d2d985ab&amp;id=ed2dc9ceb2";
+
+
+
 const useStyles = makeStyles(theme => ({
   icon: {
     marginLeft: theme.spacing(2),
@@ -53,6 +57,16 @@ const useStyles = makeStyles(theme => ({
   },
   heroTypography:{
     color:'white'
+  },
+  ms:{
+    textAlign:"center",
+    padding:"30px",
+    
+    '& *':{
+      fontSize: "1.2em",
+      
+  }
+    
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -353,7 +367,13 @@ function App() {
         </Grid>
     </Container>
     <CardGrid db={filterData(data,filter)}/>
-    <footer className={classes.footer}>
+    <div >
+    <Container maxWidth="sm" className={classes.ms} justify="space-between"  >
+        <Typography gutterBottom variant="h6">Subscribe to scaredpanties updates:</Typography>
+        <MailchimpSubscribe url={url}/>
+    </Container>
+    </div>
+    <footer className={classes.footer} >
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         Lingerie reviews, advice, and tips with a touch of luxury. Feel free to reach out to me via e-mail scaredpanties@gmail.com.
         </Typography>
