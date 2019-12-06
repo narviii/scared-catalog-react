@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     '& *':{
       fontSize: "1.2em",
       
+      
   }
     
   },
@@ -143,6 +144,10 @@ const getOrigins = (db) =>{
 function SelectOrigin(props){
   const [age, setAge] = React.useState(props.origins[0]);
   const handleChange = event => {
+    ReactGA.event({
+      category: 'User',
+      action: 'select country'
+    });
     setAge(event.target.value);
     props.onSelectChange(state => ({ ...state,origin:event.target.value }))
     
@@ -174,7 +179,10 @@ function SelectTags(props) {
   const handleChange = event => { 
     //console.log(event.target.value)
     let eventFiltered=event.target.value
-    
+    ReactGA.event({
+      category: 'User',
+      action: 'select tags'
+    });
 
     if (eventFiltered[0]==='All' && eventFiltered.length>1){
       eventFiltered=eventFiltered.filter(elem=>elem!=='All')
@@ -292,6 +300,10 @@ function App() {
     setFav(event.target.checked);
     let tmp=event.target.checked
     setFilter(state => ({ ...state,fav:tmp}))
+    ReactGA.event({
+      category: 'User',
+      action: 'select fav'
+    });
     
   };
  
