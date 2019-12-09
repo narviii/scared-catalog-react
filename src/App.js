@@ -91,6 +91,7 @@ const useStyles = makeStyles(theme => ({
   },
   stickyNav:{
     backgroundColor:theme.palette.background.paper,
+    
     position:"sticky",
     zIndex:"10",
     top:"0",
@@ -139,8 +140,11 @@ const useStyles = makeStyles(theme => ({
 
 
 
+//UA-39274880-3 prod
+//UA-39274880-4 dev
+
 function initializeReactGAmain() {
-  ReactGA.initialize('UA-39274880-3');
+  ReactGA.initialize('UA-39274880-4');
   ReactGA.pageview('/catalog');
 }
 
@@ -388,26 +392,17 @@ function App() {
           </Grid>
         </Grid>
     </Container>
-    <Container  maxWidth="md" className={classes.stickyNav}>
-        
-          
-            < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
-          
-          
-              <SelectTags tags={tgList} onSelectChange={setFilter}/>
-           
-
-         
-          
-          <FormControlLabel style={{marginRight:"0px",marginLeft:"0px",verticalAlign:"baseline"}}
+    <Container  maxWidth="md" className={classes.stickyNav} >   
+      <SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
+      <SelectTags tags={tgList} onSelectChange={setFilter}/>
+      <FormControlLabel style={{marginRight:"0px",marginLeft:"0px",verticalAlign:"baseline",textAlign:"right"}}
             control=
               { 
                 <Checkbox checked={favState} onChange={handleFavChange} value="checkedB" color="primary"/>
               }
               label="scaredpanties' favorites"
               />
-          <Favorite style={{color:"red"}}/>
-          
+      <Favorite style={{color:"red"}}/>   
     </Container>
     <CardGrid db={filterData(dataSorted,filter)}/>
     <div >
