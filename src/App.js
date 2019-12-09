@@ -399,7 +399,7 @@ function App() {
 
          
           
-          <FormControlLabel
+          <FormControlLabel style={{marginRight:"0px",marginLeft:"0px",verticalAlign:"baseline"}}
             control=
               { 
                 <Checkbox checked={favState} onChange={handleFavChange} value="checkedB" color="primary"/>
