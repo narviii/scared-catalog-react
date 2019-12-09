@@ -182,6 +182,7 @@ function SelectOrigin(props){
 
     setAge(event.target.value);
     props.onSelectChange(state => ({ ...state,origin:event.target.value }))
+    props.offsetReset(0)
     
   };
   
@@ -229,6 +230,7 @@ function SelectTags(props) {
     }
     setTag(eventFiltered);
     props.onSelectChange(state => ({ ...state,tags:eventFiltered}))
+    props.offsetReset(0)
     
   };
   
@@ -299,18 +301,18 @@ function SuchEmpty(props){
 function CardGrid(props){
 
   function handleClick(event) {
-    console.log(event)
-    setOffset(event);
+    props.onOffsetChange(event)
+    
   }
   let postPerPage=6
   let totalPosts=props.db.length
   const classes = useStyles();
-  const [offset,setOffset] = useState(0)
-  let dbSliced = props.db.slice(offset,offset+postPerPage)
+  
+  let dbSliced = props.db.slice(props.offset,props.offset+postPerPage)
 
   return (
     <Container className={classes.cardGrid} maxWidth="md"  >
-          <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={offset} style={{textAlign:"center"}}/>
+          <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={props.offset} style={{textAlign:"center"}}/>
           {props.db.length>0?
           <Grid container spacing={4}   alignItems="stretch">
             {dbSliced.map(card => (
@@ -318,7 +320,6 @@ function CardGrid(props){
             ))}
           </Grid>
           :<SuchEmpty/>}
-        <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={offset} style={{textAlign:"center"}}/>
         </Container>
   )
 }
@@ -349,6 +350,7 @@ function App() {
     setFav(event.target.checked);
     let tmp=event.target.checked
     setFilter(state => ({ ...state,fav:tmp}))
+    setOffset(0)
     ReactGA.event({
       category: 'User',
       action: 'select fav'
@@ -360,6 +362,7 @@ function App() {
   const classes = useStyles();
   const [filter, setFilter] = useState(initFilter);
   const [favState, setFav] = React.useState(false)
+  const [offset,setOffset] = useState(0)
 
   let tgList=tagList(data)
                
@@ -406,12 +409,12 @@ function App() {
         </Grid>
     </Container>
     <Container  maxWidth="md" className={classes.stickyNav} >   
-      <SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
-      <SelectTags tags={tgList} onSelectChange={setFilter}/>
+      <SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)} offsetReset={setOffset}/>
+      <SelectTags tags={tgList} onSelectChange={setFilter} offsetReset={setOffset}/>
       <FormControlLabel style={{marginRight:"0px",marginLeft:"0px",verticalAlign:"baseline",textAlign:"right"}}
             control=
               { 
-                <Checkbox checked={favState} onChange={handleFavChange} value="checkedB" color="primary"/>
+                <Checkbox checked={favState} onChange={handleFavChange} offsetReset={setOffset} value="checkedB" color="primary"/>
               }
               label="scaredpanties' favorites"
               />
@@ -419,7 +422,7 @@ function App() {
     
     </Container>
   
-    <CardGrid db={filterData(dataSorted,filter)} />
+    <CardGrid db={filterData(dataSorted,filter)} offset={offset} onOffsetChange={setOffset} />
     <div >
     <Container maxWidth="sm" className={classes.ms} justify="space-between"  >
         <Typography gutterBottom variant="h6">Subscribe to scaredpanties updates:</Typography>
