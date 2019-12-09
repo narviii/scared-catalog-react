@@ -261,7 +261,7 @@ function Post(props){
                   <CardContent className={props.cardContent} >
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {imgUrl}
+                    image= {props.cardCont.img}
                     title="Image title"
                   />
                     <Typography gutterBottom gutterTop variant="h5" component="h2">
@@ -312,7 +312,8 @@ function CardGrid(props){
 
   return (
     <Container className={classes.cardGrid} maxWidth="md"  >
-          <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={props.offset} style={{textAlign:"center"}}/>
+          <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={props.offset} 
+          style={{textAlign:"center" ,position:"sticky",top:"50px",backgroundColor:"white"}}/>
           {props.db.length>0?
           <Grid container spacing={4}   alignItems="stretch">
             {dbSliced.map(card => (
