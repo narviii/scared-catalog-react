@@ -30,10 +30,11 @@ import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { tsExpressionWithTypeArguments } from '@babel/types';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const url = "https://scaredpanties.us20.list-manage.com/subscribe/post?u=65173dffd9ab714c0d2d985ab&amp;id=ed2dc9ceb2";
 
-
+const imgUrl="https://blog.scaredpanties.com/content/images/2019/12/Screen-Shot-2019-12-08-at-12.57.58-AM.png"
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -66,7 +67,10 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1.2em",
       
       
-  }
+  },
+
+
+  
     
   },
   heroButtons: {
@@ -85,8 +89,29 @@ const useStyles = makeStyles(theme => ({
     
     
   },
+  stickyNav:{
+    backgroundColor:theme.palette.background.paper,
+    position:"sticky",
+    zIndex:"10",
+    top:"0",
+    
+  },
+
+  selectForm: {
+    margin: theme.spacing(1),
+    minWidth: "30%",
+    [theme.breakpoints.down('xs')]: {
+      minWidth:"100%"
+    },
+  },
+
+  
+
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    
+    paddingTop: '75%', // 16:9
+    marginBottom:"10px"
+    
   },
   cardContent: {
     margin:"200px",
@@ -142,6 +167,7 @@ const getOrigins = (db) =>{
 }
 
 function SelectOrigin(props){
+  const classes = useStyles();
   const [age, setAge] = React.useState(props.origins[0]);
   const handleChange = event => {
     ReactGA.event({
@@ -154,11 +180,11 @@ function SelectOrigin(props){
   };
   
   return(
-    <div>
-    <FormControl>
+    
+    <FormControl className={classes.selectForm}>
     <InputLabel id="origin-select">Brand origin country</InputLabel>
     <Select
-          style= {{minWidth:'230px'}}
+          
           labelId="origin-select"
           id="origin-select"
           
@@ -168,11 +194,12 @@ function SelectOrigin(props){
           
         </Select>
       </FormControl>
-    </div>
+   
   )
 }
 
 function SelectTags(props) {
+  const classes = useStyles();
   
   const [tag, setTag] = React.useState([props.tags[0]]);
 
@@ -200,11 +227,11 @@ function SelectTags(props) {
   };
   
   return(
-    <div>
-    <FormControl>
+    
+    <FormControl className={classes.selectForm}>
     <InputLabel id="tag-select">Tag selector</InputLabel>
     <Select
-          style= {{minWidth:'230px'}}
+          
           labelId="tag-select"
           id="tag-select"
           multiple
@@ -214,7 +241,7 @@ function SelectTags(props) {
           {props.tags.map((tag)=> <MenuItem key={tag} value={tag}>{tag}</MenuItem>)}
         </Select>
       </FormControl>
-    </div>
+  
   )
 }
 
@@ -224,7 +251,12 @@ function Post(props){
     <Grid item  xs={12} sm={6} md={4}>
                 <Card  className={props.classes.card}>
                   <CardContent className={props.cardContent} >
-                    <Typography gutterBottom variant="h5" component="h2">
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image= {imgUrl}
+                    title="Image title"
+                  />
+                    <Typography gutterBottom gutterTop variant="h5" component="h2">
                       <Link href={props.cardCont.link}>{props.cardCont.title}</Link>
                       { props.cardCont.fav===true ? <Favorite style={{color:"red"}}/>:null} 
                     </Typography>
@@ -315,6 +347,11 @@ function App() {
   let tgList=tagList(data)
                
   tgList.unshift('All')
+   let dataSorted = data.sort(function(a,b){
+    console.log(a.title.localeCompare(b.title))
+    return a.title.localeCompare(b.title)    
+  })
+
   
   return (
    <div>
@@ -351,34 +388,28 @@ function App() {
           </Grid>
         </Grid>
     </Container>
-    <Container  maxWidth="md" >
-        <Grid container spacing={2} justify="space-between">
-          <Grid item>
+    <Container  maxWidth="md" className={classes.stickyNav}>
+        
+          
             < SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)}/>
-          </Grid>
-          <Grid key='tagSelectorComp' item>
+          
+          
               <SelectTags tags={tgList} onSelectChange={setFilter}/>
-          </Grid> 
+           
 
-          <Grid key='selectorFav' item>
+         
           
           <FormControlLabel
             control=
               { 
-                <Checkbox
-                  checked={favState}
-                  onChange={handleFavChange}
-                  value="checkedB"
-                  color="primary"
-              />
+                <Checkbox checked={favState} onChange={handleFavChange} value="checkedB" color="primary"/>
               }
               label="scaredpanties' favorites"
               />
           <Favorite style={{color:"red"}}/>
-          </Grid>
-        </Grid>
+          
     </Container>
-    <CardGrid db={filterData(data,filter)}/>
+    <CardGrid db={filterData(dataSorted,filter)}/>
     <div >
     <Container maxWidth="sm" className={classes.ms} justify="space-between"  >
         <Typography gutterBottom variant="h6">Subscribe to scaredpanties updates:</Typography>
