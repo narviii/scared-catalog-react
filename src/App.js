@@ -31,6 +31,7 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { tsExpressionWithTypeArguments } from '@babel/types';
 import CardMedia from '@material-ui/core/CardMedia';
+import Pagination from "material-ui-flat-pagination";
 
 const url = "https://scaredpanties.us20.list-manage.com/subscribe/post?u=65173dffd9ab714c0d2d985ab&amp;id=ed2dc9ceb2";
 
@@ -178,6 +179,7 @@ function SelectOrigin(props){
       category: 'User',
       action: 'select country'
     });
+
     setAge(event.target.value);
     props.onSelectChange(state => ({ ...state,origin:event.target.value }))
     
@@ -295,17 +297,28 @@ function SuchEmpty(props){
 }
 
 function CardGrid(props){
+
+  function handleClick(event) {
+    console.log(event)
+    setOffset(event);
+  }
+  let postPerPage=6
+  let totalPosts=props.db.length
   const classes = useStyles();
-  
+  const [offset,setOffset] = useState(0)
+  let dbSliced = props.db.slice(offset,offset+postPerPage)
+
   return (
     <Container className={classes.cardGrid} maxWidth="md"  >
+          <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={offset} style={{textAlign:"center"}}/>
           {props.db.length>0?
           <Grid container spacing={4}   alignItems="stretch">
-            {props.db.map(card => (
+            {dbSliced.map(card => (
               <Post classes={classes} cardCont={card} key={card.title}/>
             ))}
           </Grid>
           :<SuchEmpty/>}
+        <Pagination limit={postPerPage}  size='large' total={totalPosts} onClick = {(e, offset) => handleClick(offset)} offset={offset} style={{textAlign:"center"}}/>
         </Container>
   )
 }
@@ -403,8 +416,10 @@ function App() {
               label="scaredpanties' favorites"
               />
       <Favorite style={{color:"red"}}/>   
+    
     </Container>
-    <CardGrid db={filterData(dataSorted,filter)}/>
+  
+    <CardGrid db={filterData(dataSorted,filter)} />
     <div >
     <Container maxWidth="sm" className={classes.ms} justify="space-between"  >
         <Typography gutterBottom variant="h6">Subscribe to scaredpanties updates:</Typography>

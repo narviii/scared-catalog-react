@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.5.1",
     "gh-pages": "^2.1.1",
     "lodash": "^4.17.15",
+    "material-ui-flat-pagination": "^4.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
