@@ -308,6 +308,11 @@ function CardGrid(props){
 
   function handleClick(event) {
     props.onOffsetChange(event)
+    ReactGA.event({
+      category: 'User',
+      action: 'select page',
+      label:'navigation'
+    });
     
   }
   let postPerPage=12
@@ -431,7 +436,11 @@ function App() {
     </Container>
   
     <CardGrid db={filterData(dataSorted,filter)} offset={offset} onOffsetChange={setOffset} />
+    
     <div >
+    <Container maxWidth="md" style={{textAlign:"center"}}>
+            <Typography>Currently i have {dataSorted.length} lingerie brands in my catalog from {getOrigins(dataSorted).length} countries. Come back soon, i will add more!</Typography>
+    </Container>
     <Container maxWidth="sm" className={classes.ms} justify="space-between"  >
         <Typography gutterBottom variant="h6">Subscribe to scaredpanties updates:</Typography>
         <MailchimpSubscribe url={url}/>
