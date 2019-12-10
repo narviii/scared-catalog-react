@@ -177,7 +177,8 @@ function SelectOrigin(props){
   const handleChange = event => {
     ReactGA.event({
       category: 'User',
-      action: 'select country'
+      action: 'select country',
+      label:'navigation'
     });
 
     setAge(event.target.value);
@@ -215,7 +216,8 @@ function SelectTags(props) {
     let eventFiltered=event.target.value
     ReactGA.event({
       category: 'User',
-      action: 'select tags'
+      action: 'select tags',
+      label:'navigation'
     });
 
     if (eventFiltered[0]==='All' && eventFiltered.length>1){
@@ -308,7 +310,7 @@ function CardGrid(props){
     props.onOffsetChange(event)
     
   }
-  let postPerPage=6
+  let postPerPage=12
   let totalPosts=props.db.length
   const classes = useStyles();
   
@@ -358,7 +360,8 @@ function App() {
     setOffset(0)
     ReactGA.event({
       category: 'User',
-      action: 'select fav'
+      action: 'select fav',
+      label:'navigation'
     });
     
   };
