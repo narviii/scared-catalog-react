@@ -211,7 +211,7 @@ function SelectTags(props) {
   const [tag, setTag] = React.useState([props.tags[0]]);
 
   const handleChange = event => { 
-    //console.log(event.target.value)
+    
     let eventFiltered=event.target.value
     ReactGA.event({
       category: 'User',
@@ -254,22 +254,26 @@ function SelectTags(props) {
 }
 
 function Post(props){
+
+  
+
   const classes = useStyles();
   return(
     <Grid item  xs={12} sm={6} md={4}>
                 <Card  className={props.classes.card}>
+                  
                   <CardContent className={props.cardContent} >
                   <CardMedia
                     className={classes.cardMedia}
                     image= {props.cardCont.img}
-                    title="Image title"
+                    title={props.cardCont.title}
                   />
-                    <Typography gutterBottom gutterTop variant="h5" component="h2">
-                      <Link href={props.cardCont.link}>{props.cardCont.title}</Link>
+                    <Typography gutterBottom guttertop variant="h5" component="h2">
+                      <ReactGA.OutboundLink target="_blank" eventLabel={props.cardCont.title} to={props.cardCont.link}>{props.cardCont.title}</ReactGA.OutboundLink>
                       { props.cardCont.fav===true ? <Favorite style={{color:"red"}}/>:null} 
                     </Typography>
                     
-                    <Typography gutterBottom variant="h6">{props.cardCont.origin}</Typography>
+                    <Typography gutterBottom color="textSecondary">{props.cardCont.origin}</Typography>
                     <Typography >
                       {props.cardCont.desc}
                     </Typography>
@@ -333,7 +337,7 @@ function filterData(data,fltr){
    if (fltr.origin!=='All') data = data.filter(elem=>elem.origin===fltr.origin)
    if (fltr.fav===true) data=data.filter(elem=>elem.fav===true)
    if (fltr.tags[0]!=='All') data = data.filter(elem=>intersection(elem.tags,fltr.tags).length!==0)
-   //console.log(fltr.tags)
+   
    return data
 }
 
@@ -369,7 +373,7 @@ function App() {
                
   tgList.unshift('All')
    let dataSorted = data.sort(function(a,b){
-    console.log(a.title.localeCompare(b.title))
+    
     return a.title.localeCompare(b.title)    
   })
 
