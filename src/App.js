@@ -414,7 +414,7 @@ function App() {
         </Grid>
     </Container>
     <Container  maxWidth="md" className={classes.stickyNav} >   
-      <SelectOrigin onSelectChange={setFilter} origins={getOrigins(data)} offsetReset={setOffset}/>
+      <SelectOrigin onSelectChange={setFilter} origins={getOrigins(data).sort()} offsetReset={setOffset}/>
       <SelectTags tags={tgList} onSelectChange={setFilter} offsetReset={setOffset}/>
       <FormControlLabel style={{marginRight:"0px",marginLeft:"0px",verticalAlign:"baseline",textAlign:"right"}}
             control=
